@@ -85,6 +85,12 @@ class YarnStocksTable extends Table
             ->requirePresence('kg', 'create')
             ->notEmptyString('kg');
 
+        $validator
+            ->scalar('customer_name')
+            ->maxLength('customer_name', 255)
+            ->requirePresence('customer_name', 'create')
+            ->notEmptyString('customer_name');
+
         return $validator;
     }
 

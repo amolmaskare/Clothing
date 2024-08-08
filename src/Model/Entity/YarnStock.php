@@ -16,6 +16,7 @@ use Cake\ORM\Entity;
  * @property string $kg
  * @property \Cake\I18n\FrozenTime $created
  * @property \Cake\I18n\FrozenTime|null $modified
+ * @property string $customer_name
  *
  * @property \App\Model\Entity\Denier $denier
  * @property \App\Model\Entity\Agent $agent
@@ -39,6 +40,7 @@ class YarnStock extends Entity
         'kg' => true,
         'created' => true,
         'modified' => true,
+        'customer_name' => true,
         'denier' => true,
         'agent' => true,
     ];

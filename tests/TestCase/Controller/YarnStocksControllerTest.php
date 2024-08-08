@@ -23,6 +23,8 @@ class YarnStocksControllerTest extends TestCase
      */
     protected $fixtures = [
         'app.YarnStocks',
+        'app.Deniers',
+        'app.Agents',
     ];
 
     /**

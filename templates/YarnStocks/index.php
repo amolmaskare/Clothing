@@ -39,6 +39,7 @@ use Cake\I18n\Time;
                   <th scope="col"><?= $this->Paginator->sort('id') ?></th>
                   <th scope="col"><?= $this->Paginator->sort('denier_id') ?></th>
                   <th scope="col"><?= $this->Paginator->sort('agent_id') ?></th>
+                  <th scope="col"><?= $this->Paginator->sort('customer_name') ?></th>
                   <th scope="col"><?= $this->Paginator->sort('boxes') ?></th>
                   <th scope="col"><?= $this->Paginator->sort('kg') ?></th>
                   <th scope="col"><?= $this->Paginator->sort('created') ?></th>
@@ -53,6 +54,7 @@ use Cake\I18n\Time;
                   <td><?= $this->Number->format($yarnStock->id) ?></td>
                   <td><?= h($yarnStock->denier->den) ?></td>
                   <td><?= h($yarnStock->agent->name) ?></td>
+                  <td><?= h($yarnStock->customer_name) ?></td>
                   <td><?= $this->Number->format($yarnStock->boxes) ?></td>
                   <td><?= $this->Number->format($yarnStock->kg) ?></td>
                   <td><?= h(Time::parse($yarnStock->created)->timezone('Asia/Kolkata')->i18nFormat('dd-MMM-yyyy hh:mm a')) ?></td>

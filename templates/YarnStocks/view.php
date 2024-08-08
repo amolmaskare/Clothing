@@ -29,6 +29,8 @@ use Cake\I18n\Time;
                         <dd><?= $yarnStock->has('denier') ? $this->Html->link($yarnStock->denier->den, ['controller' => 'Deniers', 'action' => 'view', $yarnStock->denier->id]) : '' ?></dd>
                         <dt scope="row"><?= __('Agent') ?></dt>
                         <dd><?= $yarnStock->has('agent') ? $this->Html->link($yarnStock->agent->name, ['controller' => 'Agents', 'action' => 'view', $yarnStock->agent->id]) : '' ?></dd>
+                        <dt scope="row"><?= __('Customer Name') ?></dt>
+                        <dd><?= h($yarnStock->customer_name) ?></dd>
                         <dt scope="row"><?= __('Id') ?></dt>
                         <dd><?= $this->Number->format($yarnStock->id) ?></dd>
                         <dt scope="row"><?= __('Boxes') ?></dt>

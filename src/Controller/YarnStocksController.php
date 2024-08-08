@@ -6,6 +6,7 @@ namespace App\Controller;
 /**
  * YarnStocks Controller
  *
+ * @property \App\Model\Table\YarnStocksTable $YarnStocks
  * @method \App\Model\Entity\YarnStock[]|\Cake\Datasource\ResultSetInterface paginate($object = null, array $settings = [])
  */
 class YarnStocksController extends AppController
@@ -18,7 +19,7 @@ class YarnStocksController extends AppController
     public function index()
     {
         $this->paginate = [
-            'contain' => ['Deniers','Agents']
+            'contain' => ['Deniers', 'Agents'],
         ];
         $yarnStocks = $this->paginate($this->YarnStocks);
 
@@ -35,17 +36,16 @@ class YarnStocksController extends AppController
     public function view($id = null)
     {
         $yarnStock = $this->YarnStocks->get($id, [
-            'contain' => ['Deniers','Agents'],
+            'contain' => ['Deniers', 'Agents'],
         ]);
 
         $this->set(compact('yarnStock'));
     }
 
-
     /**
      * Add method
      *
-     * @return \Cake\Http\Response|null Redirects on successful add, renders view otherwise.
+     * @return \Cake\Http\Response|null|void Redirects on successful add, renders view otherwise.
      */
     public function add()
     {
@@ -60,22 +60,21 @@ class YarnStocksController extends AppController
             $this->Flash->error(__('The {0} could not be saved. Please, try again.', 'Yarn Stock'));
         }
         $deniers = $this->YarnStocks->Deniers->find('list', ['valueField'=>'den', 'limit' => 200]);
-        $agents = $this->YarnStocks->Agents->find('list', ['keyValue'=>'name', 'limit' => 200]);
-        $this->set(compact('yarnStock','deniers','agents'));
+        $agents = $this->YarnStocks->Agents->find('list', ['keyValue'=>'name','limit' => 200]);
+        $this->set(compact('yarnStock', 'deniers', 'agents'));
     }
-
 
     /**
      * Edit method
      *
      * @param string|null $id Yarn Stock id.
-     * @return \Cake\Http\Response|null Redirects on successful edit, renders view otherwise.
-     * @throws \Cake\Network\Exception\NotFoundException When record not found.
+     * @return \Cake\Http\Response|null|void Redirects on successful edit, renders view otherwise.
+     * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
      */
     public function edit($id = null)
     {
         $yarnStock = $this->YarnStocks->get($id, [
-            'contain' => []
+            'contain' => [],
         ]);
         if ($this->request->is(['patch', 'post', 'put'])) {
             $yarnStock = $this->YarnStocks->patchEntity($yarnStock, $this->request->getData());
@@ -87,16 +86,15 @@ class YarnStocksController extends AppController
             $this->Flash->error(__('The {0} could not be saved. Please, try again.', 'Yarn Stock'));
         }
         $deniers = $this->YarnStocks->Deniers->find('list', ['valueField'=>'den', 'limit' => 200]);
-        $agents = $this->YarnStocks->Agents->find('list', ['keyValue'=>'name', 'limit' => 200]);
-        $this->set(compact('yarnStock','deniers','agents'));
+        $agents = $this->YarnStocks->Agents->find('list', ['keyValue'=>'name','limit' => 200]);
+        $this->set(compact('yarnStock', 'deniers', 'agents'));
     }
-
 
     /**
      * Delete method
      *
      * @param string|null $id Yarn Stock id.
-     * @return \Cake\Http\Response|null Redirects to index.
+     * @return \Cake\Http\Response|null|void Redirects to index.
      * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
      */
     public function delete($id = null)
