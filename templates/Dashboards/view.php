@@ -74,9 +74,9 @@
         <!-- Custom tabs (Charts with tabs) -->
         <div class="nav-tabs-custom">
             <ul class="nav nav-tabs pull-right">
-                <li class="active"><a href="#custom-revenue-chart" data-toggle="tab">Area</a></li>
-                <li><a href="#custom-sales-chart" data-toggle="tab">Donut</a></li>
-                <li class="pull-left header"><i class="fa fa-inbox"></i> Sales</li>
+                <li class="active"><a href="#custom-revenue-chart" data-toggle="tab">Stock Balance</a></li>
+                <!--<li><a href="#custom-sales-chart" data-toggle="tab">Donut</a></li>-->
+                <!--<li class="pull-left header"><i class="fa fa-inbox"></i> Sales</li>-->
             </ul>
             <div class="tab-content no-padding">
                 <div class="chart tab-pane active" id="custom-revenue-chart" style="position: relative; height: 300px;">
@@ -161,7 +161,7 @@ document.addEventListener('DOMContentLoaded', function() {
         data: {
             labels: designsValue,
             datasets: [{
-                label: 'Length',
+                label: 'L',
                 data: Length,
                 backgroundColor: 'rgba(60,141,188,0.2)',
                 borderColor: 'rgba(60,141,188,1)',
@@ -183,7 +183,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     },
                     title: {
                         display: true,
-                        text: 'Length (cm)',
+                        text: 'L',
                         color: '#666',
                         font: {
                             family: 'Helvetica',

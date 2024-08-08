@@ -37,7 +37,7 @@ use Cake\I18n\Time;
                         <thead>
                             <tr>
                                 <th scope="col"><?= $this->Paginator->sort('id') ?></th>
-                                <th scope="col"><?= $this->Paginator->sort('name') ?></th>
+                                <th scope="col"><?= $this->Paginator->sort('Design Number') ?></th>
                                 <th scope="col"><?= $this->Paginator->sort('created') ?></th>
                                 <th scope="col"><?= $this->Paginator->sort('modified') ?></th>
                                 <th scope="col" class="actions text-center"><?= __('Actions') ?></th>
@@ -61,6 +61,17 @@ use Cake\I18n\Time;
                     </table>
                 </div>
                 <!-- /.box-body -->
+                <div class="paginator">
+                    <ul class="pagination">
+                        <?= $this->Paginator->first('<< ' . __('first')) ?>
+                        <?= $this->Paginator->prev('< ' . __('previous')) ?>
+                        <?= $this->Paginator->numbers() ?>
+                        <?= $this->Paginator->next(__('next') . ' >') ?>
+                        <?= $this->Paginator->last(__('last') . ' >>') ?>
+                    </ul>
+                    <p><?= $this->Paginator->counter(__('Page {{page}} of {{pages}}, showing {{current}} record(s) out of {{count}} total')) ?></p>
+                </div>
+      </div>
             </div>
             <!-- /.box -->
         </div>

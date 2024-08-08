@@ -24,7 +24,7 @@ use Cake\I18n\Time;
                 <!-- /.box-header -->
                 <div class="box-body">
                     <dl class="dl-horizontal">
-                        <dt scope="row"><?= __('Name') ?></dt>
+                        <dt scope="row"><?= __('Design Number') ?></dt>
                         <dd><?= h($design->name) ?></dd>
                         <dt scope="row"><?= __('Id') ?></dt>
                         <dd><?= $this->Number->format($design->id) ?></dd>

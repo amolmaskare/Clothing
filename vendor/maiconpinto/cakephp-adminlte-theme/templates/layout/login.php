@@ -54,12 +54,12 @@
       <!-- /.social-auth-links -->
     <?php endif; ?>
 
-    <?php if (Configure::read('Theme.login.show_remember')): ?>
+    <!-- <?php if (Configure::read('Theme.login.show_remember')): ?>
       <a href="#">I forgot my password</a><br>
     <?php endif; ?>
     <?php if (Configure::read('Theme.login.show_register')): ?>
       <a href="register.html" class="text-center">Register a new membership</a>
-    <?php endif; ?>
+    <?php endif; ?> -->
 
   </div>
   <!-- /.login-box-body -->
