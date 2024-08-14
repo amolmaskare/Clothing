@@ -38,6 +38,7 @@ use Cake\I18n\Time;
                   <th scope="col"><?= $this->Paginator->sort('id') ?></th>
                   <th scope="col"><?= $this->Paginator->sort('date') ?></th>
                   <th scope="col"><?= $this->Paginator->sort('pick_id') ?></th>
+                  <th scope="col"><?= $this->Paginator->sort('Design Number') ?></th>
                   <th scope="col"><?= $this->Paginator->sort('Quantity (Meter)') ?></th>
                   <th scope="col"><?= $this->Paginator->sort('created') ?></th>
                   <th scope="col"><?= $this->Paginator->sort('modified') ?></th>
@@ -50,6 +51,7 @@ use Cake\I18n\Time;
                   <td><?= $this->Number->format($printedStockEntry->id) ?></td>
                   <td><?= h($printedStockEntry->date) ?></td>
                   <td><?= h($printedStockEntry->pick->name) ?></td>
+                  <td><?= $this->Number->format($printedStockEntry->design->name) ?></td>
                   <td><?= $this->Number->format($printedStockEntry->quantity) ?></td>
                   <td><?= h(Time::parse($printedStockEntry->created)->timezone('Asia/Kolkata')->i18nFormat('dd-MMM-yyyy hh:mm a')) ?></td>
                   <td><?= h(Time::parse($printedStockEntry->modified)->timezone('Asia/Kolkata')->i18nFormat('dd-MMM-yyyy hh:mm a')) ?></td>

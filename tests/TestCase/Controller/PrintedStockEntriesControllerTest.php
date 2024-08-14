@@ -23,6 +23,7 @@ class PrintedStockEntriesControllerTest extends TestCase
      */
     protected $fixtures = [
         'app.PrintedStockEntries',
+        'app.Picks',
     ];
 
     /**

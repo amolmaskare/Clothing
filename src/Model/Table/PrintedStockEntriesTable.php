@@ -51,6 +51,10 @@ class PrintedStockEntriesTable extends Table
             'foreignKey' => 'pick_id',
             'joinType' => 'INNER',
         ]);
+        $this->belongsTo('Designs', [
+            'foreignKey' => 'design_id',
+            'joinType' => 'INNER',
+        ]);
     }
 
     /**
@@ -88,6 +92,7 @@ class PrintedStockEntriesTable extends Table
     public function buildRules(RulesChecker $rules): RulesChecker
     {
         $rules->add($rules->existsIn(['pick_id'], 'Picks'), ['errorField' => 'pick_id']);
+        $rules->add($rules->existsIn(['design_id'], 'Designs'), ['errorField' => 'design_id']);
 
         return $rules;
     }

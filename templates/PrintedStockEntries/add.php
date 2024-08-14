@@ -31,6 +31,7 @@
               <?php
                 echo $this->Form->control('date');
                 echo $this->Form->control('pick_id', ['options' => $picks]);
+                echo $this->Form->control('design_id', ['options' => $designs, 'label'=>'Design Number']);
                 echo $this->Form->control('quantity',['label'=>'Quantity (Meter)']);
               ?>
             </div>

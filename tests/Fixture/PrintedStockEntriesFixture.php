@@ -21,14 +21,15 @@ class PrintedStockEntriesFixture extends TestFixture
         'date' => ['type' => 'date', 'length' => null, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null],
         'pick_id' => ['type' => 'integer', 'length' => null, 'unsigned' => false, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null, 'autoIncrement' => null],
         'quantity' => ['type' => 'integer', 'length' => null, 'unsigned' => false, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null, 'autoIncrement' => null],
-        'created' => ['type' => 'datetime', 'length' => null, 'precision' => null, 'null' => false, 'default' => 'CURRENT_TIMESTAMP', 'comment' => ''],
+        'created' => ['type' => 'datetime', 'length' => null, 'precision' => null, 'null' => false, 'default' => 'current_timestamp()', 'comment' => ''],
         'modified' => ['type' => 'datetime', 'length' => null, 'precision' => null, 'null' => true, 'default' => null, 'comment' => ''],
+        'design_id' => ['type' => 'integer', 'length' => null, 'unsigned' => false, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null, 'autoIncrement' => null],
         '_constraints' => [
             'primary' => ['type' => 'primary', 'columns' => ['id'], 'length' => []],
         ],
         '_options' => [
             'engine' => 'InnoDB',
-            'collation' => 'utf8mb4_0900_ai_ci'
+            'collation' => 'utf8mb4_general_ci'
         ],
     ];
     // phpcs:enable
@@ -42,11 +43,12 @@ class PrintedStockEntriesFixture extends TestFixture
         $this->records = [
             [
                 'id' => 1,
-                'date' => '2024-07-23',
+                'date' => '2024-08-14',
                 'pick_id' => 1,
                 'quantity' => 1,
-                'created' => '2024-07-23 18:30:16',
-                'modified' => '2024-07-23 18:30:16',
+                'created' => '2024-08-14 17:38:34',
+                'modified' => '2024-08-14 17:38:34',
+                'design_id' => 1,
             ],
         ];
         parent::init();

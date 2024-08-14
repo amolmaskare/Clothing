@@ -6,6 +6,7 @@ namespace App\Controller;
 /**
  * PrintedStockEntries Controller
  *
+ * @property \App\Model\Table\PrintedStockEntriesTable $PrintedStockEntries
  * @method \App\Model\Entity\PrintedStockEntry[]|\Cake\Datasource\ResultSetInterface paginate($object = null, array $settings = [])
  */
 class PrintedStockEntriesController extends AppController
@@ -18,7 +19,7 @@ class PrintedStockEntriesController extends AppController
     public function index()
     {
         $this->paginate = [
-            'contain' => ['Picks']
+            'contain' => ['Picks','Designs'],
         ];
         $printedStockEntries = $this->paginate($this->PrintedStockEntries);
 
@@ -35,17 +36,16 @@ class PrintedStockEntriesController extends AppController
     public function view($id = null)
     {
         $printedStockEntry = $this->PrintedStockEntries->get($id, [
-            'contain' => ['Picks'],
+            'contain' => ['Picks','Designs'],
         ]);
 
         $this->set(compact('printedStockEntry'));
     }
 
-
     /**
      * Add method
      *
-     * @return \Cake\Http\Response|null Redirects on successful add, renders view otherwise.
+     * @return \Cake\Http\Response|null|void Redirects on successful add, renders view otherwise.
      */
     public function add()
     {
@@ -60,22 +60,21 @@ class PrintedStockEntriesController extends AppController
             $this->Flash->error(__('The {0} could not be saved. Please, try again.', 'Printed Stock Entry'));
         }
         $picks = $this->PrintedStockEntries->Picks->find('list', ['keyValue'=>'name', 'limit' => 200]);
-
-        $this->set(compact('printedStockEntry','picks'));
+        $designs = $this->PrintedStockEntries->Designs->find('list', ['keyValue'=>'name', 'limit' => 200]);
+        $this->set(compact('printedStockEntry','picks','designs'));
     }
-
 
     /**
      * Edit method
      *
      * @param string|null $id Printed Stock Entry id.
-     * @return \Cake\Http\Response|null Redirects on successful edit, renders view otherwise.
-     * @throws \Cake\Network\Exception\NotFoundException When record not found.
+     * @return \Cake\Http\Response|null|void Redirects on successful edit, renders view otherwise.
+     * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
      */
     public function edit($id = null)
     {
         $printedStockEntry = $this->PrintedStockEntries->get($id, [
-            'contain' => []
+            'contain' => [],
         ]);
         if ($this->request->is(['patch', 'post', 'put'])) {
             $printedStockEntry = $this->PrintedStockEntries->patchEntity($printedStockEntry, $this->request->getData());
@@ -87,16 +86,15 @@ class PrintedStockEntriesController extends AppController
             $this->Flash->error(__('The {0} could not be saved. Please, try again.', 'Printed Stock Entry'));
         }
         $picks = $this->PrintedStockEntries->Picks->find('list', ['keyValue'=>'name', 'limit' => 200]);
-
+        $designs = $this->PrintedStockEntries->Designs->find('list', ['keyValue'=>'name', 'limit' => 200]);
         $this->set(compact('printedStockEntry','picks'));
     }
-
 
     /**
      * Delete method
      *
      * @param string|null $id Printed Stock Entry id.
-     * @return \Cake\Http\Response|null Redirects to index.
+     * @return \Cake\Http\Response|null|void Redirects to index.
      * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
      */
     public function delete($id = null)

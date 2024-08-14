@@ -14,6 +14,7 @@ use Cake\ORM\Entity;
  * @property int $quantity
  * @property \Cake\I18n\FrozenTime $created
  * @property \Cake\I18n\FrozenTime|null $modified
+ * @property int $design_id
  *
  * @property \App\Model\Entity\Pick $pick
  */
@@ -34,6 +35,7 @@ class PrintedStockEntry extends Entity
         'quantity' => true,
         'created' => true,
         'modified' => true,
+        'design_id' => true,
         'pick' => true,
     ];
 }
