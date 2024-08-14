@@ -32,7 +32,7 @@
                 echo $this->Form->control('date');
                 echo $this->Form->control('denier_id', ['options' => $deniers]);
                 echo $this->Form->control('agent_id', ['options' => $agents]);
-                echo $this->Form->control('customer_name');
+                echo $this->Form->control('customer_name',['label' => 'Company Name']);
                 echo $this->Form->control('boxes');
                 echo $this->Form->control('kg');
               ?>

@@ -39,7 +39,7 @@ use Cake\I18n\Time;
                   <th scope="col"><?= $this->Paginator->sort('id') ?></th>
                   <th scope="col"><?= $this->Paginator->sort('denier_id') ?></th>
                   <th scope="col"><?= $this->Paginator->sort('agent_id') ?></th>
-                  <th scope="col"><?= $this->Paginator->sort('customer_name') ?></th>
+                  <th scope="col"><?= $this->Paginator->sort('Company Name') ?></th>
                   <th scope="col"><?= $this->Paginator->sort('boxes') ?></th>
                   <th scope="col"><?= $this->Paginator->sort('kg') ?></th>
                   <th scope="col"><?= $this->Paginator->sort('created') ?></th>

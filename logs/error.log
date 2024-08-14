@@ -10274,3 +10274,347 @@ Request URL: /agents/view/1
 Referer URL: http://localhost:8765/agents
 
 
+2024-08-12 14:46:29 Error: [Cake\Database\Exception\MissingConnectionException] Connection to Mysql could not be established: SQLSTATE[HY000] [1049] Unknown database 'yarn' in C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\cakephp\src\Database\Driver.php on line 140
+Exception Attributes: array (
+  'driver' => 'Mysql',
+  'reason' => 'SQLSTATE[HY000] [1049] Unknown database \'yarn\'',
+)
+Stack Trace:
+- C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\cakephp\src\Database\Driver\Mysql.php:178
+- C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\cakephp\src\Database\Schema\SchemaDialect.php:47
+- C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\cakephp\src\Database\Driver\Mysql.php:230
+- C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\cakephp\src\Database\Schema\Collection.php:53
+- C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\cakephp\src\Database\Connection.php:395
+- C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\cakephp\src\ORM\Table.php:512
+- C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\cakephp\src\ORM\Query.php:290
+- C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\cakephp\src\ORM\Query.php:184
+- C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\cakephp\src\ORM\Table.php:1703
+- C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\authentication\src\Identifier\Resolver\OrmResolver.php:59
+- C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\authentication\src\Identifier\PasswordIdentifier.php:154
+- C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\authentication\src\Identifier\PasswordIdentifier.php:99
+- C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\authentication\src\Identifier\IdentifierCollection.php:52
+- C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\authentication\src\Authenticator\FormAuthenticator.php:131
+- C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\authentication\src\AuthenticationService.php:183
+- C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\authentication\src\Middleware\AuthenticationMiddleware.php:105
+- C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\cakephp\src\Http\Runner.php:73
+- C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\cakephp\src\Http\Middleware\BodyParserMiddleware.php:162
+- C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\cakephp\src\Http\Runner.php:73
+- C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\cakephp\src\Routing\Middleware\RoutingMiddleware.php:161
+- C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\cakephp\src\Http\Runner.php:73
+- C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\cakephp\src\Routing\Middleware\AssetMiddleware.php:68
+- C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\cakephp\src\Http\Runner.php:73
+- C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\cakephp\src\Error\Middleware\ErrorHandlerMiddleware.php:126
+- C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\cakephp\src\Http\Runner.php:73
+- C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\debug_kit\src\Middleware\DebugKitMiddleware.php:60
+- C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\cakephp\src\Http\Runner.php:73
+- C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\cakephp\src\Http\Runner.php:58
+- C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\cakephp\src\Http\Server.php:90
+- C:\xampp\htdocs\xampp\Clothing\webroot\index.php:40
+
+Caused by: [PDOException] SQLSTATE[HY000] [1049] Unknown database 'yarn' in C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\cakephp\src\Database\Driver.php on line 132
+Stack Trace:
+- C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\cakephp\src\Database\Driver.php:132
+- C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\cakephp\src\Core\Retry\CommandRetry.php:70
+- C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\cakephp\src\Database\Driver.php:138
+- C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\cakephp\src\Database\Driver\Mysql.php:178
+- C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\cakephp\src\Database\Schema\SchemaDialect.php:47
+- C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\cakephp\src\Database\Driver\Mysql.php:230
+- C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\cakephp\src\Database\Schema\Collection.php:53
+- C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\cakephp\src\Database\Connection.php:395
+- C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\cakephp\src\ORM\Table.php:512
+- C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\cakephp\src\ORM\Query.php:290
+- C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\cakephp\src\ORM\Query.php:184
+- C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\cakephp\src\ORM\Table.php:1703
+- C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\authentication\src\Identifier\Resolver\OrmResolver.php:59
+- C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\authentication\src\Identifier\PasswordIdentifier.php:154
+- C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\authentication\src\Identifier\PasswordIdentifier.php:99
+- C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\authentication\src\Identifier\IdentifierCollection.php:52
+- C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\authentication\src\Authenticator\FormAuthenticator.php:131
+- C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\authentication\src\AuthenticationService.php:183
+- C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\authentication\src\Middleware\AuthenticationMiddleware.php:105
+- C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\cakephp\src\Http\Runner.php:73
+- C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\cakephp\src\Http\Middleware\BodyParserMiddleware.php:162
+- C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\cakephp\src\Http\Runner.php:73
+- C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\cakephp\src\Routing\Middleware\RoutingMiddleware.php:161
+- C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\cakephp\src\Http\Runner.php:73
+- C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\cakephp\src\Routing\Middleware\AssetMiddleware.php:68
+- C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\cakephp\src\Http\Runner.php:73
+- C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\cakephp\src\Error\Middleware\ErrorHandlerMiddleware.php:126
+- C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\cakephp\src\Http\Runner.php:73
+- C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\debug_kit\src\Middleware\DebugKitMiddleware.php:60
+- C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\cakephp\src\Http\Runner.php:73
+- C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\cakephp\src\Http\Runner.php:58
+- C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\cakephp\src\Http\Server.php:90
+- C:\xampp\htdocs\xampp\Clothing\webroot\index.php:40
+
+Request URL: /users/login?redirect=%2F
+Referer URL: http://localhost:8765/users/login?redirect=%2F
+
+
+2024-08-12 17:15:51 Error: [Cake\Http\Exception\MissingControllerException] Controller class Readings could not be found. in C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\cakephp\src\Controller\ControllerFactory.php on line 226
+Exception Attributes: array (
+  'class' => 'Readings',
+  'plugin' => NULL,
+  'prefix' => NULL,
+  '_ext' => NULL,
+)
+Stack Trace:
+- C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\cakephp\src\Controller\ControllerFactory.php:65
+- C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\cakephp\src\Http\BaseApplication.php:311
+- C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\cakephp\src\Http\Runner.php:77
+- C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\authentication\src\Middleware\AuthenticationMiddleware.php:124
+- C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\cakephp\src\Http\Runner.php:73
+- C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\cakephp\src\Http\Middleware\BodyParserMiddleware.php:157
+- C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\cakephp\src\Http\Runner.php:73
+- C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\cakephp\src\Routing\Middleware\RoutingMiddleware.php:161
+- C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\cakephp\src\Http\Runner.php:73
+- C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\cakephp\src\Routing\Middleware\AssetMiddleware.php:68
+- C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\cakephp\src\Http\Runner.php:73
+- C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\cakephp\src\Error\Middleware\ErrorHandlerMiddleware.php:126
+- C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\cakephp\src\Http\Runner.php:73
+- C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\debug_kit\src\Middleware\DebugKitMiddleware.php:60
+- C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\cakephp\src\Http\Runner.php:73
+- C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\cakephp\src\Http\Runner.php:58
+- C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\cakephp\src\Http\Server.php:90
+- C:\xampp\htdocs\xampp\Clothing\webroot\index.php:40
+
+Request URL: /Readings
+
+
+2024-08-13 17:00:54 Error: Fatal Error (1): Maximum execution time of 60 seconds exceeded in [C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\cakephp\src\View\Form\EntityContext.php, line 51]
+Request URL: /foldings/add
+Referer URL: http://localhost:8765/
+Trace:
+Cake\Error\BaseErrorHandler::handleFatalError() - CORE\src\Error\BaseErrorHandler.php, line 258
+Cake\Error\BaseErrorHandler::Cake\Error\{closure}() - CORE\src\Error\BaseErrorHandler.php, line 122
+[main] - [internal], line ??
+
+2024-08-13 17:01:19 Error: [Cake\Error\FatalErrorException] Maximum execution time of 60 seconds exceeded in C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\cakephp\src\View\Form\EntityContext.php on line 51
+Stack Trace:
+- C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\cakephp\src\Error\BaseErrorHandler.php:122
+- [main] - [internal], line ??
+Request URL: /foldings/add
+Referer URL: http://localhost:8765/
+
+
+2024-08-14 15:06:49 Error: [Cake\Http\Exception\MissingControllerException] Controller class Width could not be found. in C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\cakephp\src\Controller\ControllerFactory.php on line 226
+Exception Attributes: array (
+  'class' => 'Width',
+  'plugin' => NULL,
+  'prefix' => NULL,
+  '_ext' => NULL,
+)
+Stack Trace:
+- C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\cakephp\src\Controller\ControllerFactory.php:65
+- C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\cakephp\src\Http\BaseApplication.php:311
+- C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\cakephp\src\Http\Runner.php:77
+- C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\authentication\src\Middleware\AuthenticationMiddleware.php:124
+- C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\cakephp\src\Http\Runner.php:73
+- C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\cakephp\src\Http\Middleware\BodyParserMiddleware.php:157
+- C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\cakephp\src\Http\Runner.php:73
+- C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\cakephp\src\Routing\Middleware\RoutingMiddleware.php:161
+- C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\cakephp\src\Http\Runner.php:73
+- C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\cakephp\src\Routing\Middleware\AssetMiddleware.php:68
+- C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\cakephp\src\Http\Runner.php:73
+- C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\cakephp\src\Error\Middleware\ErrorHandlerMiddleware.php:126
+- C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\cakephp\src\Http\Runner.php:73
+- C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\debug_kit\src\Middleware\DebugKitMiddleware.php:60
+- C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\cakephp\src\Http\Runner.php:73
+- C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\cakephp\src\Http\Runner.php:58
+- C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\cakephp\src\Http\Server.php:90
+- C:\xampp\htdocs\xampp\Clothing\webroot\index.php:40
+
+Request URL: /width/add
+Referer URL: http://localhost:8765/
+
+
+2024-08-14 15:18:28 Error: [InvalidArgumentException] Expression `pick_id` is missing operator (IS, IS NOT) with `null` value. in C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\cakephp\src\Database\Expression\QueryExpression.php on line 787
+Stack Trace:
+- C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\cakephp\src\Database\Expression\QueryExpression.php:705
+- C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\cakephp\src\Database\Expression\QueryExpression.php:133
+- C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\cakephp\src\Database\Query.php:2290
+- C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\cakephp\src\Database\Query.php:1008
+- C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\cakephp\src\ORM\Query.php:848
+- C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\cakephp\src\ORM\Table.php:2517
+- C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\cakephp\src\ORM\Table.php:1267
+- C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\cakephp\src\ORM\Association.php:861
+- C:\xampp\htdocs\xampp\Clothing\src\Controller\WidthsController.php:66
+- C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\cakephp\src\Controller\Controller.php:531
+- C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\cakephp\src\Controller\ControllerFactory.php:149
+- C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\cakephp\src\Http\BaseApplication.php:313
+- C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\cakephp\src\Http\Runner.php:77
+- C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\authentication\src\Middleware\AuthenticationMiddleware.php:124
+- C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\cakephp\src\Http\Runner.php:73
+- C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\cakephp\src\Http\Middleware\BodyParserMiddleware.php:157
+- C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\cakephp\src\Http\Runner.php:73
+- C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\cakephp\src\Routing\Middleware\RoutingMiddleware.php:161
+- C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\cakephp\src\Http\Runner.php:73
+- C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\cakephp\src\Routing\Middleware\AssetMiddleware.php:68
+- C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\cakephp\src\Http\Runner.php:73
+- C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\cakephp\src\Error\Middleware\ErrorHandlerMiddleware.php:126
+- C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\cakephp\src\Http\Runner.php:73
+- C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\debug_kit\src\Middleware\DebugKitMiddleware.php:60
+- C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\cakephp\src\Http\Runner.php:73
+- C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\cakephp\src\Http\Runner.php:58
+- C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\cakephp\src\Http\Server.php:90
+- C:\xampp\htdocs\xampp\Clothing\webroot\index.php:40
+
+Request URL: /widths/add
+
+
+2024-08-14 16:39:50 Error: [PDOException] SQLSTATE[42S22]: Column not found: 1054 Unknown column 'Picks.den' in 'field list' in C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\cakephp\src\Database\Statement\MysqlStatement.php on line 39
+Stack Trace:
+- C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\cakephp\src\Database\Statement\MysqlStatement.php:39
+- C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\cakephp\src\Database\Statement\StatementDecorator.php:178
+- C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\cakephp\src\Database\Log\LoggingStatement.php:74
+- C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\cakephp\src\Database\Connection.php:337
+- C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\cakephp\src\Core\Retry\CommandRetry.php:70
+- C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\cakephp\src\Database\Connection.php:340
+- C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\cakephp\src\Database\Query.php:250
+- C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\cakephp\src\ORM\Query.php:1148
+- C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\cakephp\src\Datasource\QueryTrait.php:293
+- C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\cakephp\src\ORM\Query.php:1096
+- C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\cakephp\src\Datasource\QueryTrait.php:500
+- C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\cakephp\src\Datasource\QueryTrait.php:511
+- C:\xampp\htdocs\xampp\Clothing\src\Controller\WidthsController.php:62
+- C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\cakephp\src\Controller\Controller.php:531
+- C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\cakephp\src\Controller\ControllerFactory.php:149
+- C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\cakephp\src\Http\BaseApplication.php:313
+- C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\cakephp\src\Http\Runner.php:77
+- C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\authentication\src\Middleware\AuthenticationMiddleware.php:124
+- C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\cakephp\src\Http\Runner.php:73
+- C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\cakephp\src\Http\Middleware\BodyParserMiddleware.php:162
+- C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\cakephp\src\Http\Runner.php:73
+- C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\cakephp\src\Routing\Middleware\RoutingMiddleware.php:161
+- C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\cakephp\src\Http\Runner.php:73
+- C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\cakephp\src\Routing\Middleware\AssetMiddleware.php:68
+- C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\cakephp\src\Http\Runner.php:73
+- C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\cakephp\src\Error\Middleware\ErrorHandlerMiddleware.php:126
+- C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\cakephp\src\Http\Runner.php:73
+- C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\debug_kit\src\Middleware\DebugKitMiddleware.php:60
+- C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\cakephp\src\Http\Runner.php:73
+- C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\cakephp\src\Http\Runner.php:58
+- C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\cakephp\src\Http\Server.php:90
+- C:\xampp\htdocs\xampp\Clothing\webroot\index.php:40
+
+Request URL: /widths/add
+Referer URL: http://localhost:8765/widths/add
+
+
+2024-08-14 16:40:22 Error: [PDOException] SQLSTATE[42S22]: Column not found: 1054 Unknown column 'Picks.den' in 'field list' in C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\cakephp\src\Database\Statement\MysqlStatement.php on line 39
+Stack Trace:
+- C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\cakephp\src\Database\Statement\MysqlStatement.php:39
+- C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\cakephp\src\Database\Statement\StatementDecorator.php:178
+- C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\cakephp\src\Database\Log\LoggingStatement.php:74
+- C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\cakephp\src\Database\Connection.php:337
+- C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\cakephp\src\Core\Retry\CommandRetry.php:70
+- C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\cakephp\src\Database\Connection.php:340
+- C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\cakephp\src\Database\Query.php:250
+- C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\cakephp\src\ORM\Query.php:1148
+- C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\cakephp\src\Datasource\QueryTrait.php:293
+- C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\cakephp\src\ORM\Query.php:1096
+- C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\cakephp\src\Datasource\QueryTrait.php:500
+- C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\cakephp\src\Datasource\QueryTrait.php:511
+- C:\xampp\htdocs\xampp\Clothing\src\Controller\WidthsController.php:62
+- C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\cakephp\src\Controller\Controller.php:531
+- C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\cakephp\src\Controller\ControllerFactory.php:149
+- C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\cakephp\src\Http\BaseApplication.php:313
+- C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\cakephp\src\Http\Runner.php:77
+- C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\authentication\src\Middleware\AuthenticationMiddleware.php:124
+- C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\cakephp\src\Http\Runner.php:73
+- C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\cakephp\src\Http\Middleware\BodyParserMiddleware.php:162
+- C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\cakephp\src\Http\Runner.php:73
+- C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\cakephp\src\Routing\Middleware\RoutingMiddleware.php:161
+- C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\cakephp\src\Http\Runner.php:73
+- C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\cakephp\src\Routing\Middleware\AssetMiddleware.php:68
+- C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\cakephp\src\Http\Runner.php:73
+- C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\cakephp\src\Error\Middleware\ErrorHandlerMiddleware.php:126
+- C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\cakephp\src\Http\Runner.php:73
+- C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\debug_kit\src\Middleware\DebugKitMiddleware.php:60
+- C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\cakephp\src\Http\Runner.php:73
+- C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\cakephp\src\Http\Runner.php:58
+- C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\cakephp\src\Http\Server.php:90
+- C:\xampp\htdocs\xampp\Clothing\webroot\index.php:40
+
+Request URL: /widths/add
+Referer URL: http://localhost:8765/widths/add
+
+
+2024-08-14 16:45:45 Error: [PDOException] SQLSTATE[42S22]: Column not found: 1054 Unknown column 'Picks.den' in 'field list' in C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\cakephp\src\Database\Statement\MysqlStatement.php on line 39
+Stack Trace:
+- C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\cakephp\src\Database\Statement\MysqlStatement.php:39
+- C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\cakephp\src\Database\Statement\StatementDecorator.php:178
+- C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\cakephp\src\Database\Log\LoggingStatement.php:74
+- C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\cakephp\src\Database\Connection.php:337
+- C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\cakephp\src\Core\Retry\CommandRetry.php:70
+- C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\cakephp\src\Database\Connection.php:340
+- C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\cakephp\src\Database\Query.php:250
+- C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\cakephp\src\ORM\Query.php:1148
+- C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\cakephp\src\Datasource\QueryTrait.php:293
+- C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\cakephp\src\ORM\Query.php:1096
+- C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\cakephp\src\Datasource\QueryTrait.php:500
+- C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\cakephp\src\Datasource\QueryTrait.php:511
+- C:\xampp\htdocs\xampp\Clothing\src\Controller\WidthsController.php:62
+- C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\cakephp\src\Controller\Controller.php:531
+- C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\cakephp\src\Controller\ControllerFactory.php:149
+- C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\cakephp\src\Http\BaseApplication.php:313
+- C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\cakephp\src\Http\Runner.php:77
+- C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\authentication\src\Middleware\AuthenticationMiddleware.php:124
+- C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\cakephp\src\Http\Runner.php:73
+- C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\cakephp\src\Http\Middleware\BodyParserMiddleware.php:162
+- C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\cakephp\src\Http\Runner.php:73
+- C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\cakephp\src\Routing\Middleware\RoutingMiddleware.php:161
+- C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\cakephp\src\Http\Runner.php:73
+- C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\cakephp\src\Routing\Middleware\AssetMiddleware.php:68
+- C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\cakephp\src\Http\Runner.php:73
+- C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\cakephp\src\Error\Middleware\ErrorHandlerMiddleware.php:126
+- C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\cakephp\src\Http\Runner.php:73
+- C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\debug_kit\src\Middleware\DebugKitMiddleware.php:60
+- C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\cakephp\src\Http\Runner.php:73
+- C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\cakephp\src\Http\Runner.php:58
+- C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\cakephp\src\Http\Server.php:90
+- C:\xampp\htdocs\xampp\Clothing\webroot\index.php:40
+
+Request URL: /widths/add
+Referer URL: http://localhost:8765/widths/add
+
+
+2024-08-14 16:46:24 Error: [PDOException] SQLSTATE[42S22]: Column not found: 1054 Unknown column 'Picks.den' in 'field list' in C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\cakephp\src\Database\Statement\MysqlStatement.php on line 39
+Stack Trace:
+- C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\cakephp\src\Database\Statement\MysqlStatement.php:39
+- C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\cakephp\src\Database\Statement\StatementDecorator.php:178
+- C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\cakephp\src\Database\Log\LoggingStatement.php:74
+- C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\cakephp\src\Database\Connection.php:337
+- C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\cakephp\src\Core\Retry\CommandRetry.php:70
+- C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\cakephp\src\Database\Connection.php:340
+- C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\cakephp\src\Database\Query.php:250
+- C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\cakephp\src\ORM\Query.php:1148
+- C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\cakephp\src\Datasource\QueryTrait.php:293
+- C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\cakephp\src\ORM\Query.php:1096
+- C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\cakephp\src\Datasource\QueryTrait.php:500
+- C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\cakephp\src\Datasource\QueryTrait.php:511
+- C:\xampp\htdocs\xampp\Clothing\src\Controller\WidthsController.php:62
+- C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\cakephp\src\Controller\Controller.php:531
+- C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\cakephp\src\Controller\ControllerFactory.php:149
+- C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\cakephp\src\Http\BaseApplication.php:313
+- C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\cakephp\src\Http\Runner.php:77
+- C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\authentication\src\Middleware\AuthenticationMiddleware.php:124
+- C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\cakephp\src\Http\Runner.php:73
+- C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\cakephp\src\Http\Middleware\BodyParserMiddleware.php:162
+- C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\cakephp\src\Http\Runner.php:73
+- C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\cakephp\src\Routing\Middleware\RoutingMiddleware.php:161
+- C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\cakephp\src\Http\Runner.php:73
+- C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\cakephp\src\Routing\Middleware\AssetMiddleware.php:68
+- C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\cakephp\src\Http\Runner.php:73
+- C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\cakephp\src\Error\Middleware\ErrorHandlerMiddleware.php:126
+- C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\cakephp\src\Http\Runner.php:73
+- C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\debug_kit\src\Middleware\DebugKitMiddleware.php:60
+- C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\cakephp\src\Http\Runner.php:73
+- C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\cakephp\src\Http\Runner.php:58
+- C:\xampp\htdocs\xampp\Clothing\vendor\cakephp\cakephp\src\Http\Server.php:90
+- C:\xampp\htdocs\xampp\Clothing\webroot\index.php:40
+
+Request URL: /widths/add
+Referer URL: http://localhost:8765/widths/add
+
+
