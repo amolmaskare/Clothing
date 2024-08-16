@@ -104,6 +104,7 @@ class Dashboards4Controller extends AppController
         $this->loadModel('Picks');
         $this->loadModel('Deniers');
         $this->loadModel('Waterjets');
+        $this->loadModel('YarnStocks');
         // var_dump($width_id, $pick_id, $denier_id);
         // exit;
         $this->autoRender = false;

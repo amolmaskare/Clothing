@@ -1,5 +1,4 @@
 <?php
-
 declare(strict_types=1);
 
 namespace App\Controller;
@@ -8,58 +7,71 @@ use Cake\ORM\TableRegistry;
 
 use Cake\Core\Configure;
 
-/**
- * Addstudents Controller
- *
- * // * @property \App\Model\Table\AddstudentsTable $Addstudents
- * // * @method \App\Model\Entity\Addstudent[]|\Cake\Datasource\ResultSetInterface paginate($object = null, array $settings = [])
- */
 class DashboardsController extends AppController
 {
-    /**
-     * Index method
-     *
-     * @return \Cake\Http\Response|null|void Renders view
-     */
-
-    public  function view()
+    public function view()
     {
-
-        //  $typeId = $this->getTypeId();
-        //  if ($typeId == '2') {
-        //      $redirect = $this->request->getQuery('redirect', [
-        //          'controller' => 'Users',
-        //          'action' => 'userList',
-        //      ]);
-        //  return $this->redirect($redirect);
-        // }
-
+        // Load the models
+        $this->loadModel('Foldings');
         $this->loadModel('Lengths');
-        $lengths = $this->Lengths->find('all')->toArray();
+        $this->loadModel('Mtrperrolls');
+        $this->loadModel('Designs');
 
-        $lValues = [];
-        foreach ($lengths as $length) {
-            $lValues[] = (int)$length->L; // Convert 'L' values to integers
+        // Fetch data from the Foldings table
+        $foldings = $this->Foldings->find('all')->toArray();
+
+        // Initialize arrays for data
+        $lengths = [];
+        $designNames = [];
+        $calculatedResults = [];
+
+        // Loop through each folding record
+        foreach ($foldings as $folding) {
+            $lengthId = $folding->length_id;
+            $mtrperrollId = $folding->mtrperroll_id;
+
+            // Fetch Length and Mtrperroll values
+            $length = $this->Lengths->find('all')
+                ->where(['Lengths.id' => $lengthId])
+                ->select('L')
+                ->first();
+            
+            $mtrperroll = $this->Mtrperrolls->find('all')
+                ->where(['Mtrperrolls.id' => $mtrperrollId])
+                ->select('number')
+                ->first();
+            
+            // Calculate result
+            if ($length && $mtrperroll) {
+                $lengthValue = (int)$length->L;
+                $mtrperrollValue = (int)$mtrperroll->number;
+                $totalRolls = (int)$folding->total_rolls;
+                $calculatedValue = $mtrperrollValue * $lengthValue/100 * $totalRolls;
+                $Designsdata = $this->Designs->find('all')
+                ->where(['Designs.id' => $folding->design_id])
+                ->select('name')
+                ->first();
+                // Store values
+                $lengths[] = $lengthValue;
+                $designNames[] = $Designsdata['name'];  // Assuming 'design_name' is a field in the Foldings table
+                $calculatedResults[] = $calculatedValue;
+            }
         }
 
-        $Length = $lValues;
+        // Pass the data to the view
         $chartOptions = [
             'responsive' => true,
             'maintainAspectRatio' => false
         ];
 
-        $this->loadModel('Designs');
+        // Load the Designs model
         $designs = $this->Designs->find('all')->toArray();
-        // debug($designs);
         $designsValue = [];
         foreach ($designs as $design) {
-            $designsValue[] = $design->name; // Convert 'L' values to integers
+            $designsValue[] = $design->name;
         }
-        // debug($designsValue);
-        // die();
 
-
-
-        $this->set(compact('Length', 'chartOptions', 'designsValue'));
+        // Set the variables to the view
+        $this->set(compact('lengths', 'designNames', 'calculatedResults', 'chartOptions', 'designsValue'));
     }
 }
