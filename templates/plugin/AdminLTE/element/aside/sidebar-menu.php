@@ -11,6 +11,7 @@
       <li><a href="<?php echo $this->Url->build('/Dashboards/view'); ?>"><i class="fa fa-circle-o"></i>After Dispatch Report</a></li>
       <li><a href="<?php echo $this->Url->build('/Dashboards2/view'); ?>"><i class="fa fa-circle-o"></i>Grey Remaining Report</a></li>
       <li><a href="<?php echo $this->Url->build('/Dashboards3/view'); ?>"><i class="fa fa-circle-o"></i>Grey Production Report</a></li>
+      <li><a href="<?php echo $this->Url->build('/Dashboards4/view'); ?>"><i class="fa fa-circle-o"></i>Used Quantity Report</a></li>
     </ul>
   </li>
   <li class="treeview">

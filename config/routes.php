@@ -76,6 +76,16 @@ $routes->scope('/', function (RouteBuilder $builder) {
      * ...and connect the rest of 'Pages' controller's URLs.
      */
     $builder->connect('/dashboards/*', 'Pages::view');
+    $builder->connect('/dashboards4/get-picks-and-deniers-by-width/:width_id', 
+    ['controller' => 'Dashboards4', 'action' => 'getPicksAndDeniersByWidth'],
+    ['pass' => ['width_id'], 'width_id' => '[0-9]+']
+);
+$builder->connect('/dashboards4/calculate-report/:width_id/:pick_id/:denier_id', 
+    ['controller' => 'Dashboards4', 'action' => 'calculateReport'],
+    ['pass' => ['width_id', 'pick_id', 'denier_id'], 'width_id' => '[0-9]+', 'pick_id' => '[0-9]+', 'denier_id' => '[0-9]+']
+);
+
+
 
     /*
      * Connect catchall routes for all controllers.
