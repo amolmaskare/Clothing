@@ -11,9 +11,7 @@ use Cake\Http\Exception\NotFoundException;
 
 class Dashboards4Controller extends AppController
 {
-    public function index(){
-
-    }
+    public function index() {}
     public function view()
     {
         $this->loadModel('Widths');
@@ -186,19 +184,39 @@ class Dashboards4Controller extends AppController
             // Fetch the quantity from the Waterjets table
             $waterjet = $this->Waterjets->find('all')
                 ->where(['Waterjets.pick_id IN' => $pickIds])
-                ->select(['quantity'])
+                ->select('quantity')
                 ->first();
             //    $waterjet2= (int)($waterjet);
             // Check if the quantity exists
             $quantity = $waterjet ? $waterjet['quantity'] : 0;
 
-            // Subtract the quantity from the result
-            $finalResult = $result - $quantity;
+            $startDate = $this->request->getQuery('start_date');
+            $endDate = $this->request->getQuery('end_date');
+            //         // Subtract the quantity from the result
+            $finalResult1 = $result * $quantity;
+            $yarnStocksTotalKg = $this->YarnStocks->find('all')
+                ->where([
+                    // 'YarnStocks.pick_id' => $pickIds,
+                    'YarnStocks.date >=' => $startDate,
+                    'YarnStocks.date <=' => $endDate
+                ])
+                ->select(['totalKg' => 'SUM(YarnStocks.kg)'])
+                ->first();
+
+            $kgFromYarnStocks = $yarnStocksTotalKg ? $yarnStocksTotalKg->totalKg : 0;
+            if ($quantity == 0) {
+                // Send a response that will trigger an alert
+                echo json_encode(['status' => 'error', 'message' => 'Quantity is not available for pick']);
+                exit;  // Make sure to exit to stop further processing
+            }
+            
+            // // Subtract the kg from the final result
+            $finalResult = $finalResult1 - $kgFromYarnStocks;
             // Return result as JSON
             try {
                 // Just return a simple static JSON response for testing
                 $this->response = $this->response->withType('application/json')
-                    ->withStringBody(json_encode(['result' => $finalResult]));
+                    ->withStringBody(json_encode(['result' => (int)$finalResult]));
                 return $this->response;
             } catch (\Exception $e) {
                 // Log exception and return a JSON error response

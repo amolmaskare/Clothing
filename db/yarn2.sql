@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 14, 2024 at 08:06 PM
+-- Generation Time: Aug 16, 2024 at 07:24 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -161,7 +161,8 @@ CREATE TABLE `foldings` (
 --
 
 INSERT INTO `foldings` (`id`, `date`, `length_id`, `design_id`, `mtrperroll_id`, `total_rolls`, `created`, `modified`) VALUES
-(1, '2024-07-29', 2, 2, 1, 55, '2024-07-28 13:36:33', '2024-07-28 13:41:10');
+(1, '2024-07-29', 2, 2, 1, 55, '2024-07-28 13:36:33', '2024-07-28 13:41:10'),
+(2, '2024-08-17', 1, 4, 2, 22, '2024-08-16 12:32:43', '2024-08-16 12:33:10');
 
 -- --------------------------------------------------------
 
@@ -249,7 +250,7 @@ CREATE TABLE `picks` (
 
 INSERT INTO `picks` (`id`, `name`, `denier_id`, `created`, `modified`) VALUES
 (1, '25', 2, '2024-07-28 04:38:41', '2024-07-28 13:49:44'),
-(2, 'Pantery', 2, '2024-07-28 17:24:05', '2024-07-28 17:24:36');
+(2, '30', 2, '2024-07-28 17:24:05', '2024-08-15 14:50:49');
 
 -- --------------------------------------------------------
 
@@ -321,7 +322,7 @@ CREATE TABLE `waterjets` (
 
 INSERT INTO `waterjets` (`id`, `date`, `pick_id`, `quantity`, `created`, `modified`) VALUES
 (1, '2024-07-28', 1, 20000, '2024-07-28 04:59:22', '2024-07-28 04:59:22'),
-(2, '2024-08-03', 1, 220000, '2024-08-03 18:36:11', '2024-08-03 18:36:11');
+(2, '2024-08-03', 1, 220000, '2024-08-03 18:36:11', '2024-08-16 16:45:53');
 
 -- --------------------------------------------------------
 
@@ -343,7 +344,9 @@ CREATE TABLE `widths` (
 --
 
 INSERT INTO `widths` (`id`, `name`, `pick_id`, `denier_id`, `created`, `modified`) VALUES
-(1, 'test', 1, 1, '2024-08-14 17:58:35', '2024-08-14 17:58:35');
+(1, '1001', 1, 1, '2024-08-14 17:58:35', '2024-08-15 14:53:08'),
+(2, '1002', 2, 2, '2024-08-15 11:46:09', '2024-08-15 14:53:19'),
+(3, '1003', 1, 1, '2024-08-15 15:30:22', '2024-08-15 15:30:22');
 
 -- --------------------------------------------------------
 
@@ -503,7 +506,7 @@ ALTER TABLE `dispatch_to_own_factories`
 -- AUTO_INCREMENT for table `foldings`
 --
 ALTER TABLE `foldings`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `grey_remainings`
@@ -551,7 +554,7 @@ ALTER TABLE `waterjets`
 -- AUTO_INCREMENT for table `widths`
 --
 ALTER TABLE `widths`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `yarn_stocks`
