@@ -180,7 +180,8 @@ class Dashboards4Controller extends AppController
 
             $deniersFloat = (int)array_values($deniers)[0];
 
-            $result = (105 * $widthValue * $pickValue * $deniersFloat * 90000) / 1000;
+            $result = (105 * $widthValue * $pickValue * $deniersFloat)/ 900000 ;
+            $result = $result/ 1000;
             // Fetch the quantity from the Waterjets table
             $waterjet = $this->Waterjets->find('all')
                 ->where(['Waterjets.pick_id IN' => $pickIds])
