@@ -48,14 +48,30 @@ class MtrperrollsController extends AppController
     {
         $mtrperroll = $this->Mtrperrolls->newEmptyEntity();
         if ($this->request->is('post')) {
-            $mtrperroll = $this->Mtrperrolls->patchEntity($mtrperroll, $this->request->getData());
-            if ($this->Mtrperrolls->save($mtrperroll)) {
-                $this->Flash->success(__('The {0} has been saved.', 'Mtrperroll'));
+            // Extract number from request data
+            $number = (int)$this->request->getData('number');
 
-                return $this->redirect(['action' => 'index']);
+            // Check if the number already exists in the database
+            $existingMtrperroll = $this->Mtrperrolls->find()
+                ->where(['number' => $number])
+                ->first();
+
+            if (!$existingMtrperroll) {
+                // If the number doesn't exist, patch the entity and save it
+                $mtrperroll = $this->Mtrperrolls->patchEntity($mtrperroll, $this->request->getData());
+                if ($this->Mtrperrolls->save($mtrperroll)) {
+                    $this->Flash->success(__('The {0} has been saved.', 'Mtrperroll'));
+
+                    return $this->redirect(['action' => 'index']);
+                } else {
+                    $this->Flash->error(__('The {0} could not be saved. Please, try again.', 'Mtrperroll'));
+                }
+            } else {
+                // If the number already exists, show an error message
+                $this->Flash->error(__('The {0} could not be saved. Data already exists, try again.', 'Mtrperroll'));
             }
-            $this->Flash->error(__('The {0} could not be saved. Please, try again.', 'Mtrperroll'));
         }
+
         $this->set(compact('mtrperroll'));
     }
 

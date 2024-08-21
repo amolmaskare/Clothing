@@ -174,11 +174,11 @@ class Dashboards4Controller extends AppController
                 ->where(['Deniers.id IN' => $denierIds])
                 ->toArray();
             // Ensure that `value` field exists in your tables
-            $widthValue = (int)array_values($WidthsData)[0];
+            $widthValue = (float)array_values($WidthsData)[0];
 
-            $pickValue = (int)array_values($picks)[0];
+            $pickValue = (float)array_values($picks)[0];
 
-            $deniersFloat = (int)array_values($deniers)[0];
+            $deniersFloat = (float)array_values($deniers)[0];
 
             $result = (105 * $widthValue * $pickValue * $deniersFloat)/ 900000 ;
             $result = $result/ 1000;
@@ -187,7 +187,7 @@ class Dashboards4Controller extends AppController
                 ->where(['Waterjets.pick_id IN' => $pickIds])
                 ->select('quantity')
                 ->first();
-            //    $waterjet2= (int)($waterjet);
+            //    $waterjet2= (float)($waterjet);
             // Check if the quantity exists
             $quantity = $waterjet ? $waterjet['quantity'] : 0;
 
@@ -217,7 +217,7 @@ class Dashboards4Controller extends AppController
             try {
                 // Just return a simple static JSON response for testing
                 $this->response = $this->response->withType('application/json')
-                    ->withStringBody(json_encode(['result' => (int)$finalResult]));
+                    ->withStringBody(json_encode(['result' => (float)$finalResult]));
                 return $this->response;
             } catch (\Exception $e) {
                 // Log exception and return a JSON error response

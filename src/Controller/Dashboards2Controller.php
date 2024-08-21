@@ -124,7 +124,7 @@ class Dashboards2Controller extends AppController
             $remainingQuantity = $data['quantity'] - $dispatchQuantity - $printedStockQuantity;
 
             $calculatedData[] = [
-                'pick' => $data['pick'], // Use the correct pick value here
+                'pick' => $waterjet->pick->name, // Use the correct pick value here
                 'data' => $remainingQuantity . ' MTR'
             ];
         }
