@@ -30,8 +30,16 @@
             <div class="box-body">
               <?php
                 echo $this->Form->control('date');
-                echo $this->Form->control('pick_id', ['options' => $picks]);
-                echo $this->Form->control('factory_name');
+                echo $this->Form->control('pick_id', [
+                    'options' => $picks,
+                    'empty' => 'Select a pick',
+                    'id' => 'pick-id'
+                ]);
+            ?>
+            <div id="denier-display" style="font-size: 24px; margin-bottom: 20px;">
+                <?php echo $denier ? 'Denier: ' . h($denier) : 'Select a pick to see the denier'; ?>
+            </div>
+            <?php                echo $this->Form->control('factory_name');
                 echo $this->Form->control('quantity', ['label'=>'Quantity (Meter)']);
               ?>
             </div>
@@ -46,3 +54,30 @@
   </div>
   <!-- /.row -->
 </section>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+    $('#pick-id').on('change', function() {
+        var pickId = $(this).val();
+        var denierDisplay = $('#denier-display');
+
+        if (pickId) {
+            $.ajax({
+                url: '<?php echo $this->Url->build(['controller' => 'Waterjets', 'action' => 'getDeniersByPick']); ?>/' + pickId,
+                method: 'GET',
+                success: function(response) {
+                    var deniers = JSON.parse(response);
+                    var denierValue = Object.values(deniers)[0] || 'Not found'; // Get the first denier value or 'Not found'
+                    denierDisplay.text('Denier: ' + denierValue);
+                },
+                error: function() {
+                    alert('Error fetching deniers. Please try again.');
+                }
+            });
+        } else {
+            denierDisplay.text('Select a pick to see the denier');
+        }
+    });
+});
+</script>

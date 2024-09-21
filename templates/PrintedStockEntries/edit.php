@@ -2,6 +2,9 @@
 /**
  * @var \App\View\AppView $this
  * @var \App\Model\Entity\PrintedStockEntry $printedStockEntry
+ * @var array $picks
+ * @var array $designs
+ * @var string|null $denier
  */
 ?>
 <!-- Content Header (Page header) -->
@@ -31,7 +34,12 @@
               <?php
                 echo $this->Form->control('date');
                 echo $this->Form->control('pick_id', ['options' => $picks]);
-                echo $this->Form->control('design_id', ['options' => $designs,  'label'=>'Design Number']);
+                ?>
+                <div id="denier-id" style="font-size: 24px; margin-bottom: 20px;">
+                  <?php echo $denier ? "Denier: $denier" : 'Select a pick to see the denier'; ?>
+                </div>
+                <?php
+                echo $this->Form->control('design_id', ['options' => $designs, 'label'=>'Design Number']);
                 echo $this->Form->control('quantity',['label'=>'Quantity (Meter)']);
               ?>
             </div>
@@ -43,6 +51,32 @@
         </div>
         <!-- /.box -->
       </div>
-  </div>
-  <!-- /.row -->
-</section>
+    </div>
+    <!-- /.row -->
+  </section>
+
+  <script>
+  document.addEventListener('DOMContentLoaded', function () {
+      const pickSelect = document.querySelector('#pick-id'); // Adjust selector as needed
+      const denierField = document.querySelector('#denier-id'); // Adjust selector as needed
+
+      pickSelect.addEventListener('change', function () {
+          const pickId = this.value;
+
+          if (pickId) {
+              fetch(`/printed-stock-entries/get-denier/${pickId}`)
+                  .then(response => response.json())
+                  .then(data => {
+                      if (data.denier) {
+                          denierField.textContent = `Denier: ${data.denier}`; // Display denier
+                      } else {
+                          denierField.textContent = 'Denier information not available'; // Clear or update message
+                      }
+                  })
+                  .catch(error => console.error('Error fetching denier:', error));
+          } else {
+              denierField.textContent = 'Select a pick to see the denier'; // Reset message
+          }
+      });
+  });
+  </script>

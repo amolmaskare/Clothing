@@ -47,7 +47,7 @@ return [
             'username' => 'root',
             'password' => '',
 
-            'database' => 'yarn',
+            'database' => 'yarn3',
             /*
              * If not using the default 'public' schema with the PostgreSQL driver
              * set it here.

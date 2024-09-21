@@ -24,6 +24,8 @@ use Cake\I18n\Time;
                 <!-- /.box-header -->
                 <div class="box-body">
                     <dl class="dl-horizontal">
+                    <dt scope="row"><?= __('Date') ?></dt>
+                        <dd><?= h($dispatchStockSale->date->format('d-m-Y')) ?></dd>
                         <dt scope="row"><?= __('L') ?></dt>
                         <dd><?= $dispatchStockSale->has('length') ? $this->Html->link($dispatchStockSale->length->L, ['controller' => 'Lengths', 'action' => 'view', $dispatchStockSale->length->id]) : '' ?></dd>
                         <dt scope="row"><?= __('Design Number') ?></dt>
@@ -32,8 +34,6 @@ use Cake\I18n\Time;
                         <dd><?= $this->Number->format($dispatchStockSale->id) ?></dd>
                         <dt scope="row"><?= __('Total No Rolls') ?></dt>
                         <dd><?= $this->Number->format($dispatchStockSale->total_no_rolls) ?></dd>
-                        <dt scope="row"><?= __('Date') ?></dt>
-                        <dd><?= h($dispatchStockSale->date) ?></dd>
                         <dt scope="row"><?= __('Created') ?></dt>
                         <dd><?= h(Time::parse($dispatchStockSale->created)->timezone('Asia/Kolkata')->i18nFormat('dd-MMM-yyyy hh:mm a')) ?></dd>
                         <dt scope="row"><?= __('Modified') ?></dt>

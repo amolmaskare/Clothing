@@ -1,4 +1,9 @@
 <?php
+// Use the lastSubmittedDate to set the default value for the date input
+$defaultDate = !empty($lastSubmittedDate) ? $lastSubmittedDate : date('Y-m-d', strtotime('-1 day'));
+?>
+
+<?php
 /**
  * @var \App\View\AppView $this
  * @var \App\Model\Entity\DispatchToOwnFactory $dispatchToOwnFactory
@@ -29,8 +34,18 @@
           <?php echo $this->Form->create($dispatchToOwnFactory, ['role' => 'form']); ?>
             <div class="box-body">
               <?php
-                echo $this->Form->control('date');
-                echo $this->Form->control('pick_id', ['options' => $picks]);
+                echo $this->Form->control('date', [
+                    'default' => $defaultDate, // Set default value to the last submitted date or previous day
+                    'type' => 'date'
+                ]);
+                echo $this->Form->control('pick_id', [
+                    'options' => $picks,
+                    'empty' => 'Select a pick',
+                    'id' => 'pick-id'
+                ]);
+            ?>
+            <div id="denier-display" style="font-size: 24px; margin-bottom: 20px;">Select a pick to see the denier</div>
+            <?php
                 echo $this->Form->control('factory_name');
                 echo $this->Form->control('quantity',['label'=>'Quantity (Meter)']);
               ?>
@@ -47,3 +62,29 @@
   <!-- /.row -->
 </section>
 
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+    $('#pick-id').on('change', function() {
+        var pickId = $(this).val();
+        var denierDisplay = $('#denier-display');
+
+        if (pickId) {
+            $.ajax({
+                url: '/waterjets/getDeniersByPick/' + pickId,
+                method: 'GET',
+                success: function(response) {
+                    var deniers = JSON.parse(response);
+                    var denierValue = Object.values(deniers)[0] || 'Not found';
+                    denierDisplay.text('Denier: ' + denierValue);
+                },
+                error: function() {
+                    alert('Error fetching deniers. Please try again.');
+                }
+            });
+        } else {
+            denierDisplay.text('Select a pick to see the denier');
+        }
+    });
+});
+</script>

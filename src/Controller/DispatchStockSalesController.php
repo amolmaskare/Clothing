@@ -51,18 +51,30 @@ class DispatchStockSalesController extends AppController
     public function add()
     {
         $dispatchStockSale = $this->DispatchStockSales->newEmptyEntity();
+        $session = $this->request->getSession();
+
+        // Retrieve the last submitted date from the database
+        $lastWaterjet = $this->DispatchStockSales->find()
+            ->select(['date'])
+            ->order(['date' => 'DESC'])
+            ->first();
+
+        // Get the date from the last entry, or default to the previous day
+        $lastSubmittedDate = !empty($lastWaterjet) ? $lastWaterjet->date->format('Y-m-d') : date('Y-m-d', strtotime('-1 day'));
+
         if ($this->request->is('post')) {
             $dispatchStockSale = $this->DispatchStockSales->patchEntity($dispatchStockSale, $this->request->getData());
             if ($this->DispatchStockSales->save($dispatchStockSale)) {
                 $this->Flash->success(__('The {0} has been saved.', 'Dispatch Stock Sale'));
+                $session->write('lastSubmittedDate', $this->request->getData('date'));
 
-                return $this->redirect(['action' => 'index']);
+                return $this->redirect(['action' => 'add']);
             }
             $this->Flash->error(__('The {0} could not be saved. Please, try again.', 'Dispatch Stock Sale'));
         }
         $lengths = $this->DispatchStockSales->Lengths->find('list', ['valueField'=>'L','limit' => 200]);
         $designs = $this->DispatchStockSales->Designs->find('list', ['keyValue'=>'name', 'limit' => 200]);
-        $this->set(compact('dispatchStockSale', 'lengths', 'designs'));
+        $this->set(compact('dispatchStockSale', 'lengths', 'designs','lastSubmittedDate'));
     }
 
 

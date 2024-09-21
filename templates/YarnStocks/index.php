@@ -50,7 +50,7 @@ use Cake\I18n\Time;
             <tbody>
               <?php foreach ($yarnStocks as $yarnStock): ?>
                 <tr>
-                  <td><?= h($yarnStock->date) ?></td>
+                <td><?= h($yarnStock->date->format('d-m-Y')) ?></td>
                   <td><?= $this->Number->format($yarnStock->id) ?></td>
                   <td><?= h($yarnStock->denier->den) ?></td>
                   <td><?= h($yarnStock->agent->name) ?></td>

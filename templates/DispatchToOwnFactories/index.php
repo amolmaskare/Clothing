@@ -39,6 +39,7 @@ use Cake\I18n\Time;
                                 <th scope="col"><?= $this->Paginator->sort('id') ?></th>
                                 <th scope="col"><?= $this->Paginator->sort('date') ?></th>
                                 <th scope="col"><?= $this->Paginator->sort('pick_id') ?></th>
+                                <th scope="col"><?= __('Denier') ?></th>
                                 <th scope="col"><?= $this->Paginator->sort('factory_name') ?></th>
                                 <th scope="col"><?= $this->Paginator->sort('Quantity (Meter)') ?></th>
                                 <th scope="col"><?= $this->Paginator->sort('created') ?></th>
@@ -50,8 +51,9 @@ use Cake\I18n\Time;
                             <?php foreach ($dispatchToOwnFactories as $dispatchToOwnFactory) : ?>
                                 <tr>
                                     <td><?= $this->Number->format($dispatchToOwnFactory->id) ?></td>
-                                    <td><?= h($dispatchToOwnFactory->date) ?></td>
+                                    <td><?= h($dispatchToOwnFactory->date->format('d-m-Y')) ?></td>
                                     <td><?= h($dispatchToOwnFactory->pick->name) ?></td>
+                                    <td><?= h($dispatchToOwnFactory->pick->denier->den) ?></td> <!-- Display denier -->
                                     <td><?= h($dispatchToOwnFactory->factory_name) ?></td>
                                     <td><?= $this->Number->format($dispatchToOwnFactory->quantity) ?></td>
                                     <td><?= h(Time::parse($dispatchToOwnFactory->created)->timezone('Asia/Kolkata')->i18nFormat('dd-MMM-yyyy hh:mm a')) ?></td>

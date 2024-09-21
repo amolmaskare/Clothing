@@ -5,7 +5,6 @@ use Cake\I18n\Time;
 <section class="content-header">
   <h1>
     Waterjets
-
     <div class="pull-right"><?php echo $this->Html->link(__('New'), ['action' => 'add'], ['class'=>'btn btn-success btn-xs']) ?></div>
   </h1>
 </section>
@@ -38,6 +37,7 @@ use Cake\I18n\Time;
                   <th scope="col"><?= $this->Paginator->sort('id') ?></th>
                   <th scope="col"><?= $this->Paginator->sort('date') ?></th>
                   <th scope="col"><?= $this->Paginator->sort('pick_id') ?></th>
+                  <th scope="col"><?= __('Denier') ?></th>
                   <th scope="col"><?= $this->Paginator->sort('Quantity (Meter)') ?></th>
                   <th scope="col"><?= $this->Paginator->sort('created') ?></th>
                   <th scope="col"><?= $this->Paginator->sort('modified') ?></th>
@@ -48,8 +48,9 @@ use Cake\I18n\Time;
               <?php foreach ($waterjets as $waterjet): ?>
                 <tr>
                   <td><?= $this->Number->format($waterjet->id) ?></td>
-                  <td><?= h($waterjet->date) ?></td>
+                  <td><?= h($waterjet->date->format('d-m-Y')) ?></td>
                   <td><?= h($waterjet->pick->name) ?></td>
+                  <td><?= h($waterjet->pick->denier->den) ?></td> <!-- Display denier -->
                   <td><?= $this->Number->format($waterjet->quantity) ?></td>
                   <td><?= h(Time::parse($waterjet->created)->timezone('Asia/Kolkata')->i18nFormat('dd-MMM-yyyy hh:mm a')) ?></td>
                   <td><?= h(Time::parse($waterjet->modified)->timezone('Asia/Kolkata')->i18nFormat('dd-MMM-yyyy hh:mm a')) ?></td>
@@ -73,7 +74,7 @@ use Cake\I18n\Time;
                         <?= $this->Paginator->last(__('last') . ' >>') ?>
                     </ul>
                     <p><?= $this->Paginator->counter(__('Page {{page}} of {{pages}}, showing {{current}} record(s) out of {{count}} total')) ?></p>
-                </div>
+        </div>
       </div>
       </div>
       <!-- /.box -->

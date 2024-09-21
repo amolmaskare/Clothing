@@ -19,7 +19,7 @@ class DispatchToOwnFactoriesController extends AppController
     public function index()
     {
         $this->paginate = [
-            'contain' => ['Picks'],
+            'contain' => ['Picks'=> ['Deniers']],
         ];
         $dispatchToOwnFactories = $this->paginate($this->DispatchToOwnFactories);
 
@@ -36,7 +36,7 @@ class DispatchToOwnFactoriesController extends AppController
     public function view($id = null)
     {
         $dispatchToOwnFactory = $this->DispatchToOwnFactories->get($id, [
-            'contain' => ['Picks'],
+            'contain' => ['Picks'=> ['Deniers']],
         ]);
 
         $this->set(compact('dispatchToOwnFactory'));
@@ -51,20 +51,63 @@ class DispatchToOwnFactoriesController extends AppController
     public function add()
     {
         $dispatchToOwnFactory = $this->DispatchToOwnFactories->newEmptyEntity();
+        $session = $this->request->getSession();
+
+        // Retrieve the last submitted date from the database
+        $lastWaterjet = $this->DispatchToOwnFactories->find()
+            ->select(['date'])
+            ->order(['date' => 'DESC'])
+            ->first();
+
+        // Get the date from the last entry, or default to the previous day
+        $lastSubmittedDate = !empty($lastWaterjet) ? $lastWaterjet->date->format('Y-m-d') : date('Y-m-d', strtotime('-1 day'));
+
         if ($this->request->is('post')) {
             $dispatchToOwnFactory = $this->DispatchToOwnFactories->patchEntity($dispatchToOwnFactory, $this->request->getData());
             if ($this->DispatchToOwnFactories->save($dispatchToOwnFactory)) {
                 $this->Flash->success(__('The {0} has been saved.', 'Dispatch To Own Factory'));
+                $session->write('lastSubmittedDate', $this->request->getData('date'));
 
-                return $this->redirect(['action' => 'index']);
+                return $this->redirect(['action' => 'add']);
             }
             $this->Flash->error(__('The {0} could not be saved. Please, try again.', 'Dispatch To Own Factory'));
         }
-        $picks = $this->DispatchToOwnFactories->Picks->find('list', ['limit' => 200]);
-        $this->set(compact('dispatchToOwnFactory', 'picks'));
+        $picks = $this->DispatchToOwnFactories->Picks->find()
+        ->select(['Picks.id', 'Picks.name', 'Deniers.den'])
+        ->contain(['Deniers'])
+        ->all()
+        ->combine('id', function ($pick) {
+            return $pick->name . ' (' . $pick->denier->den . ')';
+        })
+        ->toArray();        $this->set(compact('dispatchToOwnFactory', 'picks','lastSubmittedDate'));
     }
 
+    public function getDeniersByPick($pickId = null)
+    {
+        $this->autoRender = false; // Disable view rendering
 
+        if ($this->request->is('ajax')) {
+            // Log the incoming pickId for debugging
+            $this->log("Received pickId: " . $pickId, 'debug');
+
+            $pick = $this->Waterjets->Picks->get($pickId);
+            $this->log("Pick data: " . print_r($pick, true), 'debug');
+
+            if (!empty($pick->denier_id)) {
+                $deniers = $this->Waterjets->Picks->Deniers->find('list', [
+                    'keyField' => 'id',
+                    'valueField' => 'den',
+                    'conditions' => ['Deniers.id' => $pick->denier_id]
+                ])->toArray();
+                $this->log("Deniers fetched: " . print_r($deniers, true), 'debug');
+            } else {
+                $deniers = [];
+                $this->log("No denier_id found for pickId: " . $pickId, 'debug');
+            }
+
+            echo json_encode($deniers);
+        }
+    }
     /**
      * Edit method
      *

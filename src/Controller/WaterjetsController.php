@@ -18,7 +18,7 @@ class WaterjetsController extends AppController
     public function index()
     {
         $this->paginate = [
-            'contain' => ['Picks'],
+            'contain' => ['Picks' => ['Deniers']],
         ];
         $waterjets = $this->paginate($this->Waterjets);
 
@@ -35,7 +35,7 @@ class WaterjetsController extends AppController
     public function view($id = null)
     {
         $waterjet = $this->Waterjets->get($id, [
-            'contain' => ['Picks'],
+            'contain' => ['Picks'=> ['Deniers']],
         ]);
 
         $this->set(compact('waterjet'));
@@ -50,18 +50,69 @@ class WaterjetsController extends AppController
     public function add()
     {
         $waterjet = $this->Waterjets->newEmptyEntity();
+        $session = $this->request->getSession();
+
+        // Retrieve the last submitted date from the database
+        $lastWaterjet = $this->Waterjets->find()
+            ->select(['date'])
+            ->order(['date' => 'DESC'])
+            ->first();
+
+        // Get the date from the last entry, or default to the previous day
+        $lastSubmittedDate = !empty($lastWaterjet) ? $lastWaterjet->date->format('Y-m-d') : date('Y-m-d', strtotime('-1 day'));
+
         if ($this->request->is('post')) {
             $waterjet = $this->Waterjets->patchEntity($waterjet, $this->request->getData());
             if ($this->Waterjets->save($waterjet)) {
                 $this->Flash->success(__('The {0} has been saved.', 'Waterjet'));
 
-                return $this->redirect(['action' => 'index']);
+                // Save the current date as the last submitted date in the session
+                $session->write('lastSubmittedDate', $this->request->getData('date'));
+
+                return $this->redirect(['action' => 'add']); // Redirect to the same add page
             }
             $this->Flash->error(__('The {0} could not be saved. Please, try again.', 'Waterjet'));
         }
-        $picks = $this->Waterjets->Picks->find('list', ['keyValue'=>'name', 'limit' => 200]);
-        $this->set(compact('waterjet','picks'));
+
+        $picks = $this->Waterjets->Picks->find()
+        ->select(['Picks.id', 'Picks.name', 'Deniers.den'])
+        ->contain(['Deniers'])
+        ->all()
+        ->combine('id', function ($pick) {
+            return $pick->name . ' (' . $pick->denier->den . ')';
+        })
+        ->toArray();
+         $this->set(compact('waterjet', 'picks', 'lastSubmittedDate'));
     }
+
+
+    public function getDeniersByPick($pickId = null)
+{
+    $this->autoRender = false; // Disable view rendering
+
+    if ($this->request->is('ajax')) {
+        // Log the incoming pickId for debugging
+        $this->log("Received pickId: " . $pickId, 'debug');
+
+        $pick = $this->Waterjets->Picks->get($pickId);
+        $this->log("Pick data: " . print_r($pick, true), 'debug');
+
+        if (!empty($pick->denier_id)) {
+            $deniers = $this->Waterjets->Picks->Deniers->find('list', [
+                'keyField' => 'id',
+                'valueField' => 'den',
+                'conditions' => ['Deniers.id' => $pick->denier_id]
+            ])->toArray();
+            $this->log("Deniers fetched: " . print_r($deniers, true), 'debug');
+        } else {
+            $deniers = [];
+            $this->log("No denier_id found for pickId: " . $pickId, 'debug');
+        }
+
+        echo json_encode($deniers);
+    }
+}
+
 
 
     /**
@@ -86,7 +137,16 @@ class WaterjetsController extends AppController
             $this->Flash->error(__('The {0} could not be saved. Please, try again.', 'Waterjet'));
         }
         $picks = $this->Waterjets->Picks->find('list', ['keyValue'=>'name', 'limit' => 200]);
-        $this->set(compact('waterjet','picks'));
+        $denier = null;
+    if ($waterjet->pick_id) {
+        $pick = $this->Waterjets->Picks->get($waterjet->pick_id, [
+            'contain' => ['Deniers']
+        ]);
+        if ($pick && $pick->denier) {
+            $denier = $pick->denier->den;
+        }
+    }
+        $this->set(compact('waterjet','picks','denier'));
     }
 
 

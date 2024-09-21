@@ -50,19 +50,30 @@ class FoldingsController extends AppController
     public function add()
     {
         $folding = $this->Foldings->newEmptyEntity();
+        $session = $this->request->getSession();
+
+        // Retrieve the last submitted date from the database
+        $lastWaterjet = $this->Foldings->find()
+            ->select(['date'])
+            ->order(['date' => 'DESC'])
+            ->first();
+
+        // Get the date from the last entry, or default to the previous day
+        $lastSubmittedDate = !empty($lastWaterjet) ? $lastWaterjet->date->format('Y-m-d') : date('Y-m-d', strtotime('-1 day'));
+
         if ($this->request->is('post')) {
             $folding = $this->Foldings->patchEntity($folding, $this->request->getData());
             if ($this->Foldings->save($folding)) {
                 $this->Flash->success(__('The {0} has been saved.', 'Folding'));
-
-                return $this->redirect(['action' => 'index']);
+                $session->write('lastSubmittedDate', $this->request->getData('date'));
+                return $this->redirect(['action' => 'add']);
             }
             $this->Flash->error(__('The {0} could not be saved. Please, try again.', 'Folding'));
         }
         $lengths = $this->Foldings->Lengths->find('list', ['valueField'=>'L','limit' => 200]);
         $designs = $this->Foldings->Designs->find('list', ['keyValue'=>'name', 'limit' => 200]);
         $mtrperrolls = $this->Foldings->Mtrperrolls->find('list', ['valueField'=>'number', 'limit' => 200]);
-        $this->set(compact('folding','lengths','designs','mtrperrolls'));
+        $this->set(compact('folding','lengths','designs','mtrperrolls','lastSubmittedDate'));
     }
 
 

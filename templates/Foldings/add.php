@@ -1,4 +1,8 @@
 <?php
+// Use the lastSubmittedDate to set the default value for the date input
+$defaultDate = !empty($lastSubmittedDate) ? $lastSubmittedDate : date('Y-m-d', strtotime('-1 day'));
+?>
+<?php
 /**
  * @var \App\View\AppView $this
  * @var \App\Model\Entity\Folding $folding
@@ -29,7 +33,10 @@
           <?php echo $this->Form->create($folding, ['role' => 'form']); ?>
             <div class="box-body">
               <?php
-                echo $this->Form->control('date');
+                echo $this->Form->control('date', [
+                    'default' => $defaultDate, // Set default value to the last submitted date or previous day
+                    'type' => 'date'
+                ]);
                 echo $this->Form->control('length_id', ['options' => $lengths, 'label'=>'L']);
                 echo $this->Form->control('design_id', ['options' => $designs, 'label'=>'Design Number']);
                 echo $this->Form->control('mtrperroll_id', ['options' => $mtrperrolls, 'label'=>'Meter Per Roll']);

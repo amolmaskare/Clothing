@@ -1,5 +1,4 @@
 <?php
-
 use Cake\I18n\Time;
 ?>
 <section class="content-header">
@@ -24,14 +23,16 @@ use Cake\I18n\Time;
                 <!-- /.box-header -->
                 <div class="box-body">
                     <dl class="dl-horizontal">
+                    <dt scope="row"><?= __('Date') ?></dt>
+                        <dd><?= h($waterjet->date->format('d-m-Y')) ?></dd>
                         <dt scope="row"><?= __('Pick') ?></dt>
                         <dd><?= $waterjet->has('pick') ? $this->Html->link($waterjet->pick->name, ['controller' => 'Picks', 'action' => 'view', $waterjet->pick->id]) : '' ?></dd>
+                        <dt scope="row"><?= __('Denier') ?></dt>
+                        <dd><?= $waterjet->has('pick') && $waterjet->pick->has('denier') ? h($waterjet->pick->denier->den) : '' ?></dd> <!-- Display denier -->
                         <dt scope="row"><?= __('Id') ?></dt>
                         <dd><?= $this->Number->format($waterjet->id) ?></dd>
                         <dt scope="row"><?= __('Quantity (Meter)') ?></dt>
                         <dd><?= $this->Number->format($waterjet->quantity) ?></dd>
-                        <dt scope="row"><?= __('Date') ?></dt>
-                        <dd><?= h($waterjet->date) ?></dd>
                         <dt scope="row"><?= __('Created') ?></dt>
                         <dd><?= h(Time::parse($waterjet->created)->timezone('Asia/Kolkata')->i18nFormat('dd-MMM-yyyy hh:mm a')) ?></dd>
                         <dt scope="row"><?= __('Modified') ?></dt>
@@ -41,5 +42,4 @@ use Cake\I18n\Time;
             </div>
         </div>
     </div>
-
 </section>

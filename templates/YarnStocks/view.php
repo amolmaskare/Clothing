@@ -24,7 +24,7 @@ use Cake\I18n\Time;
                 <div class="box-body">
                     <dl class="dl-horizontal">
                         <dt scope="row"><?= __('Date') ?></dt>
-                        <dd><?= h($yarnStock->date) ?></dd>
+                        <dd><?= h($yarnStock->date->format('d-m-Y')) ?></dd>
                         <dt scope="row"><?= __('Denier') ?></dt>
                         <dd><?= $yarnStock->has('denier') ? $this->Html->link($yarnStock->denier->den, ['controller' => 'Deniers', 'action' => 'view', $yarnStock->denier->id]) : '' ?></dd>
                         <dt scope="row"><?= __('Agent') ?></dt>

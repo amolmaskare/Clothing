@@ -24,16 +24,18 @@ use Cake\I18n\Time;
         <!-- /.box-header -->
         <div class="box-body">
           <dl class="dl-horizontal">
+          <dt scope="row"><?= __('Date') ?></dt>
+            <dd><?= h($printedStockEntry->date->format('d-m-Y')) ?></dd>
             <dt scope="row"><?= __('Pick') ?></dt>
             <dd><?= $printedStockEntry->has('pick') ? $this->Html->link($printedStockEntry->pick->name, ['controller' => 'Picks', 'action' => 'view', $printedStockEntry->pick->id]) : '' ?></dd>
+            <dt scope="row"><?= __('Denier') ?></dt>
+            <dd><?= $printedStockEntry->has('pick') && $printedStockEntry->pick->has('denier') ? h($printedStockEntry->pick->denier->den) : '' ?></dd> <!-- Display denier -->
             <dt scope="row"><?= __('Design') ?></dt>
             <dd><?= $printedStockEntry->has('design') ? $this->Html->link($printedStockEntry->design->name, ['controller' => 'Designs', 'action' => 'view', $printedStockEntry->design->id]) : '' ?></dd>
             <dt scope="row"><?= __('Id') ?></dt>
             <dd><?= $this->Number->format($printedStockEntry->id) ?></dd>
                         <dt scope="row"><?= __('Quantity (Meter)') ?></dt>
             <dd><?= $this->Number->format($printedStockEntry->quantity) ?></dd>
-            <dt scope="row"><?= __('Date') ?></dt>
-            <dd><?= h($printedStockEntry->date) ?></dd>
             <dt scope="row"><?= __('Created') ?></dt>
                         <dd><?= h(Time::parse($printedStockEntry->created)->timezone('Asia/Kolkata')->i18nFormat('dd-MMM-yyyy hh:mm a')) ?></dd>
             <dt scope="row"><?= __('Modified') ?></dt>

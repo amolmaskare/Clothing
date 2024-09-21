@@ -50,7 +50,7 @@ use Cake\I18n\Time;
                             <?php foreach ($foldings as $folding) : ?>
                                 <tr>
                                     <td><?= $this->Number->format($folding->id) ?></td>
-                                    <td><?= h($folding->date) ?></td>
+                                    <td><?= h($folding->date->format('d-m-Y')) ?></td>
                                     <td><?= h($folding->length->L) ?></td>
                                     <td><?= h($folding->design->name) ?></td>
                                     <td><?= h($folding->mtrperroll->number) ?></td>

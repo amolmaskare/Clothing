@@ -24,6 +24,8 @@ use Cake\I18n\Time;
                 <!-- /.box-header -->
                 <div class="box-body">
                     <dl class="dl-horizontal">
+                    <dt scope="row"><?= __('Date') ?></dt>
+                        <dd><?= h($folding->date->format('d-m-Y')) ?></dd>
                         <dt scope="row"><?= __('L') ?></dt>
                         <dd><?= $folding->has('length') ? $this->Html->link($folding->length->L, ['controller' => 'Lengths', 'action' => 'view', $folding->length->id]) : '' ?></dd>
                         <dt scope="row"><?= __('Design Number') ?></dt>
@@ -34,8 +36,6 @@ use Cake\I18n\Time;
                         <dd><?= $this->Number->format($folding->id) ?></dd>
                         <dt scope="row"><?= __('Total Rolls') ?></dt>
                         <dd><?= $this->Number->format($folding->total_rolls) ?></dd>
-                        <dt scope="row"><?= __('Date') ?></dt>
-                        <dd><?= h($folding->date) ?></dd>
                         <dt scope="row"><?= __('Created') ?></dt>
                         <dd><?= h(Time::parse($folding->created)->timezone('Asia/Kolkata')->i18nFormat('dd-MMM-yyyy hh:mm a')) ?></dd>
                         <dt scope="row"><?= __('Modified') ?></dt>

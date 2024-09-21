@@ -49,7 +49,7 @@ use Cake\I18n\Time;
                             <?php foreach ($dispatchStockSales as $dispatchStockSale) : ?>
                                 <tr>
                                     <td><?= $this->Number->format($dispatchStockSale->id) ?></td>
-                                    <td><?= h($dispatchStockSale->date) ?></td>
+                                    <td><?= h($dispatchStockSale->date->format('d-m-Y')) ?></td>
                                     <td><?= h($dispatchStockSale->length->L) ?></td>
                                     <td><?= h($dispatchStockSale->design->name) ?></td>
                                     <td><?= $this->Number->format($dispatchStockSale->total_no_rolls) ?></td>

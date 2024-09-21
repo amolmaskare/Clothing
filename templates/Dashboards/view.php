@@ -23,6 +23,7 @@
                                 <th>Length (cm)</th>
                                 <th>Design Name</th>
                                 <th>Calculated Result</th>
+                                <th>Remaining Rolls Stock</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -31,6 +32,7 @@
                                     <td><?php echo h($length); ?></td>
                                     <td><?php echo h($designNames[$index]); ?></td>
                                     <td><?php echo h($calculatedResults[$index]); ?></td>
+                                    <td><?php echo h($remainingRolls[$index]); ?></td>
                                 </tr>
                             <?php endforeach; ?>
                         </tbody>

@@ -24,16 +24,18 @@ use Cake\I18n\Time;
                 <!-- /.box-header -->
                 <div class="box-body">
                     <dl class="dl-horizontal">
+                    <dt scope="row"><?= __('Date') ?></dt>
+                        <dd><?= h($dispatchToOwnFactory->date->format('d-m-Y')) ?></dd>
                         <dt scope="row"><?= __('Pick') ?></dt>
                         <dd><?= $dispatchToOwnFactory->has('pick') ? $this->Html->link($dispatchToOwnFactory->pick->name, ['controller' => 'Picks', 'action' => 'view', $dispatchToOwnFactory->pick->id]) : '' ?></dd>
+                        <dt scope="row"><?= __('Denier') ?></dt>
+                        <dd><?= $dispatchToOwnFactory->has('pick') && $dispatchToOwnFactory->pick->has('denier') ? h($dispatchToOwnFactory->pick->denier->den) : '' ?></dd> <!-- Display denier -->
                         <dt scope="row"><?= __('Factory Name') ?></dt>
                         <dd><?= h($dispatchToOwnFactory->factory_name) ?></dd>
                         <dt scope="row"><?= __('Id') ?></dt>
                         <dd><?= $this->Number->format($dispatchToOwnFactory->id) ?></dd>
                         <dt scope="row"><?= __('Quantity (Meter)') ?></dt>
                         <dd><?= $this->Number->format($dispatchToOwnFactory->quantity) ?></dd>
-                        <dt scope="row"><?= __('Date') ?></dt>
-                        <dd><?= h($dispatchToOwnFactory->date) ?></dd>
                         <dt scope="row"><?= __('Created') ?></dt>
                         <dd><?= h(Time::parse($dispatchToOwnFactory->created)->timezone('Asia/Kolkata')->i18nFormat('dd-MMM-yyyy hh:mm a')) ?></dd>
                         <dt scope="row"><?= __('Modified') ?></dt>
